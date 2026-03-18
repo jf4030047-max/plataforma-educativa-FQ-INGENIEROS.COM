@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte y Ayuda | Plataforma Educativa</title>
+    <link rel="stylesheet" href="styles/educativa.css">
+    <style>
+        .faq-lista {
+            background: #f4f8fb;
+            border-radius: 10px;
+            padding: 1.2rem 1rem;
+            margin-bottom: 2rem;
+        }
+        .faq-pregunta {
+            font-weight: 600;
+            color: #0078d7;
+            margin-bottom: 0.2rem;
+        }
+        .faq-respuesta {
+            margin-bottom: 1.1rem;
+        }
+        .contacto-form {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px #0078d71a;
+            padding: 1.5rem 2rem;
+            max-width: 500px;
+        }
+        .contacto-form input, .contacto-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #cce4f7;
+        }
+        .contacto-form button {
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <a href="cursos.html">&larr; Catálogo</a>
+        <h1>Soporte y Ayuda</h1>
+    </header>
+    <main>
+        <section id="faq">
+            <div class="faq-lista">
+                <div class="faq-pregunta">¿Cómo me inscribo en un curso?</div>
+                <div class="faq-respuesta">Desde el catálogo, haz clic en el curso y luego en el botón "Inscribirse".</div>
+                <div class="faq-pregunta">¿Dónde veo mis certificados?</div>
+                <div class="faq-respuesta">En tu perfil, sección "Certificados Obtenidos".</div>
+                <div class="faq-pregunta">¿Cómo contacto a un profesor?</div>
+                <div class="faq-respuesta">Puedes escribirle desde el foro del curso o desde la sección de comunidad.</div>
+            </div>
+        </section>
+        <section id="contacto">
+            <form class="contacto-form">
+                <h3>Contacto y Soporte</h3>
+                <input type="text" placeholder="Tu nombre" required>
+                <input type="email" placeholder="Tu email" required>
+                <textarea rows="4" placeholder="Describe tu consulta..." required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 FQ Ingenieros - Plataforma Educativa</p>
+    </footer>
+    <script src="js/soporte.js"></script>
+</body>
+</html>

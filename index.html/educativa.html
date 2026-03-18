@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Educativa FQ Ingenieros</title>
+    <link rel="stylesheet" href="styles/educativa.css">
+</head>
+<body>
+    <header class="edu-header">
+        <h1>Plataforma Educativa FQ Ingenieros</h1>
+        <nav>
+            <ul>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="evaluaciones.html">Evaluaciones</a></li>
+                <li><a href="certificados.html">Certificados</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="soporte.html">Soporte</a></li>
+                <li><a href="usuario.html">Mi Perfil</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="edu-main">
+        <section class="bienvenida">
+            <h2>Bienvenido a tu plataforma educativa</h2>
+            <p>Accede a cursos, recursos, evaluaciones y mucho más en un entorno moderno y profesional.</p>
+        </section>
+        <section class="dashboard">
+            <div class="dashboard-item">
+                <h3>Progreso Individual de Cursos</h3>
+                <div style="margin-bottom:1.1rem;">
+                    <div style="font-weight:500; margin-bottom:0.2rem;">Matemáticas</div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%">80%</div></div>
+                </div>
+                <div style="margin-bottom:1.1rem;">
+                    <div style="font-weight:500; margin-bottom:0.2rem;">Física</div>
+                    <div class="progress-bar"><div class="progress" style="width: 60%">60%</div></div>
+                </div>
+                <div style="margin-bottom:1.1rem;">
+                    <div style="font-weight:500; margin-bottom:0.2rem;">Química</div>
+                    <div class="progress-bar"><div class="progress" style="width: 35%">35%</div></div>
+                </div>
+                <div>
+                    <div style="font-weight:500; margin-bottom:0.2rem;">Simulación de Procesos</div>
+                    <div class="progress-bar"><div class="progress" style="width: 95%">95%</div></div>
+                </div>
+            </div>
+            <div class="dashboard-item">
+                <h3>Próximas Evaluaciones</h3>
+                <ul>
+                    <li>Matemáticas - 15/03/2026</li>
+                    <li>Física - 20/03/2026</li>
+                </ul>
+            </div>
+            <div class="dashboard-item">
+                <h3>Certificados Obtenidos</h3>
+                <ul>
+                    <li>Introducción a la Ingeniería</li>
+                    <li>Simulación de Procesos</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer class="edu-footer">
+        <p>&copy; 2026 FQ Ingenieros. Todos los derechos reservados.</p>
+    </footer>
+</body>
+<!-- Chatbot para sugerencias a profesores -->
+<button id="openChat" style="position:fixed;bottom:32px;right:32px;background:#0078d7;color:#fff;border:none;border-radius:50%;width:56px;height:56px;box-shadow:0 2px 8px #0078d733;font-size:2rem;cursor:pointer;z-index:2000;">💬</button>
+<div id="chatModal" style="display:none;position:fixed;bottom:100px;right:40px;width:320px;background:#fff;border-radius:12px;box-shadow:0 4px 24px #0078d755;padding:1.2rem;z-index:2100;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.7rem;">
+        <strong style="color:#0078d7;">Sugerencias para Profesores</strong>
+        <button id="closeChat" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:#0078d7;">&times;</button>
+    </div>
+    <textarea id="sugerenciaInput" rows="4" style="width:100%;border-radius:6px;border:1px solid #cfd8dc;padding:0.5rem;resize:none;outline:none;"></textarea>
+    <button id="enviarSugerencia" style="margin-top:0.7rem;background:#0078d7;color:#fff;border:none;padding:0.5rem 1.2rem;border-radius:6px;cursor:pointer;font-weight:600;float:right;">Enviar</button>
+    <div id="mensajeEnviado" style="display:none;color:#00bfae;margin-top:0.7rem;font-weight:500;">¡Sugerencia enviada!</div>
+</div>
+<script>
+    const openChat = document.getElementById('openChat');
+    const chatModal = document.getElementById('chatModal');
+    const closeChat = document.getElementById('closeChat');
+    const enviarSugerencia = document.getElementById('enviarSugerencia');
+    const mensajeEnviado = document.getElementById('mensajeEnviado');
+    const sugerenciaInput = document.getElementById('sugerenciaInput');
+    openChat.onclick = () => { chatModal.style.display = 'block'; };
+    closeChat.onclick = () => { chatModal.style.display = 'none'; mensajeEnviado.style.display = 'none'; sugerenciaInput.value = ''; };
+    enviarSugerencia.onclick = () => {
+        if(sugerenciaInput.value.trim() !== '') {
+            mensajeEnviado.style.display = 'block';
+            setTimeout(() => { chatModal.style.display = 'none'; mensajeEnviado.style.display = 'none'; sugerenciaInput.value = ''; }, 1500);
+        }
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Plataforma FQ Ingenieros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://th.bing.com/th/id/OIG4.ev3982ArX7cq0DDb9sG5?pid=ImgGn') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        .login-container {
+            background: #fff;
+            padding: 2.5rem 2rem 2rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #0078d733;
+            max-width: 420px;
+            margin: 80px auto;
+        }
+        .login-container h2 {
+            margin-bottom: 1.5rem;
+            color: #0078d7;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .form-control:focus {
+            border-color: #0078d7;
+            box-shadow: 0 0 0 0.2rem #0078d733;
+        }
+        .btn-primary {
+            background: #0078d7;
+            border: none;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background: #005fa3;
+        }
+        .form-icon {
+            color: #0078d7;
+            margin-right: 0.5rem;
+        }
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 1rem;
+                max-width: 98vw;
+                margin: 30px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2><i class="bi bi-box-arrow-in-right form-icon"></i>Iniciar Sesión</h2>
+        <form id="loginForm" novalidate>
+            <div class="mb-3">
+                <label class="form-label"><i class="bi bi-credit-card-2-front form-icon"></i>DNI</label>
+                <input type="text" class="form-control" placeholder="DNI" required maxlength="8" pattern="\d{8}" autofocus>
+                <div class="invalid-feedback">Ingrese un DNI válido de 8 dígitos.</div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
+        </form>
+        <p class="text-center mt-3">
+            ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+        </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Empresarial - Plataforma Educativa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f6f8;
+            min-height: 100vh;
+        }
+        .sidebar {
+            min-height: 100vh;
+            background: #0078d7;
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 230px;
+            z-index: 100;
+        }
+        .sidebar .nav-link {
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: background 0.2s, color 0.2s;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #005fa3;
+            color: #cce6ff;
+        }
+        .sidebar .sidebar-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+        .dashboard-header h2 {
+            color: #0078d7;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .user-info .bi {
+            font-size: 2rem;
+            color: #0078d7;
+        }
+        .card-course {
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #0078d71a;
+            transition: box-shadow 0.2s;
+        }
+        .card-course:hover {
+            box-shadow: 0 4px 24px #0078d733;
+        }
+        .card-course .card-title {
+            color: #0078d7;
+            font-weight: 700;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #0078d7 60%, #28a745 100%);
+        }
+        .summary-box {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0078d733;
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .summary-box .bi {
+            font-size: 2.2rem;
+            color: #0078d7;
+            margin-bottom: 0.5rem;
+        }
+        .summary-title {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+        }
+        .summary-value {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #222;
+        }
+        @media (max-width: 900px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                min-height: auto;
+                padding: 1rem 0.5rem;
+                display: flex;
+                flex-direction: row;
+                gap: 1.2rem;
+                justify-content: center;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 1.2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar d-flex flex-column">
+        <div class="sidebar-title mb-4"><i class="bi bi-mortarboard"></i> FQ Empresas</div>
+        <a href="#dashboard" class="nav-link active"><i class="bi bi-bar-chart"></i> Dashboard</a>
+        <a href="registro.html" class="nav-link"><i class="bi bi-person-plus"></i> Registro</a>
+        <a href="login.html" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Acceso</a>
+        <a href="presentacion.html" class="nav-link"><i class="bi bi-easel"></i> Presentación</a>
+        <a href="#cursos" class="nav-link"><i class="bi bi-journal-bookmark"></i> Cursos</a>
+        <a href="#evaluaciones" class="nav-link"><i class="bi bi-clipboard-check"></i> Evaluaciones</a>
+        <a href="#usuarios" class="nav-link"><i class="bi bi-people"></i> Usuarios</a>
+        <a href="#reportes" class="nav-link"><i class="bi bi-graph-up"></i> Reportes</a>
+        <a href="#soporte" class="nav-link"><i class="bi bi-life-preserver"></i> Soporte</a>
+    </div>
+    <div class="main-content">
+        <div class="dashboard-header">
+            <h2>Panel de Control Empresarial</h2>
+            <div class="user-info">
+                <i class="bi bi-person-circle"></i>
+                <span>Bienvenido, <strong>Usuario Empresa</strong></span>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-3 col-6">
+                <div class="summary-box">
+                    <i class="bi bi-journal-bookmark"></i>
+                    <div class="summary-title">Cursos activos</div>
+                    <div class="summary-value">8</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="summary-box">
+                    <i class="bi bi-people"></i>
+                    <div class="summary-title">Usuarios</div>
+                    <div class="summary-value">120</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="summary-box">
+                    <i class="bi bi-clipboard-check"></i>
+                    <div class="summary-title">Evaluaciones</div>
+                    <div class="summary-value">15</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="summary-box">
+                    <i class="bi bi-award"></i>
+                    <div class="summary-title">Certificados</div>
+                    <div class="summary-value">42</div>
+                </div>
+            </div>
+        </div>
+        <h4 class="mb-3">Tus Cursos</h4>
+        <div class="row g-4" id="dashboard-cursos-grid"></div>
+        <script>
+        // Sincronización de cursos con localStorage
+        function renderDashboardCursos(cursos) {
+            const grid = document.getElementById('dashboard-cursos-grid');
+            grid.innerHTML = '';
+            const imagenes = [
+                'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1515165562835-c7a0b4a2b2b8?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80'
+            ];
+            cursos.forEach((curso, idx) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+                col.innerHTML = `
+                    <div class="card card-course shadow-sm mb-4">
+                        <img src="${imagenes[idx % imagenes.length]}" class="card-img-top" alt="${curso.titulo}" style="height:180px;object-fit:cover;">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">${curso.categoria.charAt(0).toUpperCase() + curso.categoria.slice(1)}</span>
+                            <h5 class="card-title">${curso.titulo}</h5>
+                            <p class="card-text">${curso.descripcion}</p>
+                            <div class="curso-meta mb-2">${curso.duracion} • <span class="badge bg-success">${curso.nivel.charAt(0).toUpperCase() + curso.nivel.slice(1)}</span></div>
+                            <a href="curso-detalle.html?id=${curso.id}" class="btn btn-gradient w-100">Ver curso</a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(col);
+            });
+        }
+        // Obtiene cursos desde localStorage
+        function obtenerCursos() {
+            try {
+                return JSON.parse(localStorage.getItem('cursos')) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+        renderDashboardCursos(obtenerCursos());
+        </script>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h4>Notificaciones</h4>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex align-items-center"><i class="bi bi-bell me-2 text-primary"></i> Nueva evaluación disponible en "Gestión de Proyectos"</li>
+                    <li class="list-group-item d-flex align-items-center"><i class="bi bi-bell me-2 text-primary"></i> Certificado obtenido en "Comunicación Efectiva"</li>
+                    <li class="list-group-item d-flex align-items-center"><i class="bi bi-bell me-2 text-primary"></i> Mensaje de soporte: "Recuerda actualizar tu perfil de usuario"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

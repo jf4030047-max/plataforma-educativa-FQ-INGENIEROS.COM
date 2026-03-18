@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Unificada - Secciones Paso a Paso</title>
+    <link rel="stylesheet" href="styles/educativa.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        .step-section {
+            display: none;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: #f4f6f8;
+            padding: 0;
+        }
+        .step-section.active {
+            display: flex;
+        }
+        .section-content {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 2.5rem 2rem;
+            max-width: 700px;
+            width: 95vw;
+        }
+        .section-title {
+            color: #0078d7;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        .step-nav {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .step-btn {
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.7rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: background 0.2s;
+        }
+        .step-btn:hover {
+            background: #005fa3;
+        }
+        @media (max-width: 800px) {
+            .section-content {
+                max-width: 98vw;
+                padding: 1.2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="registro" class="step-section active">
+        <div class="section-content">
+            <h2 class="section-title">Registro</h2>
+            <form id="registroForm">
+                <label>Nombre(s)</label>
+                <input type="text" placeholder="Nombre(s)" required>
+                <label>Apellidos</label>
+                <input type="text" placeholder="Apellidos" required>
+                <label>DNI</label>
+                <input type="text" placeholder="DNI" required maxlength="8" pattern="\d{8}" title="Debe tener exactamente 8 dígitos" autocomplete="off">
+                <div style="margin-bottom:1rem;"><label>Provincia</label><br>
+                    <select id="provincia" required style="width:100%;margin-top:0.3rem;">
+                        <option value="">Selecciona una provincia</option>
+                        <option value="Huancayo">Huancayo</option>
+                        <option value="Concepción">Concepción</option>
+                        <option value="Chanchamayo">Chanchamayo</option>
+                        <option value="Jauja">Jauja</option>
+                        <option value="Junín">Junín</option>
+                        <option value="Satipo">Satipo</option>
+                        <option value="Tarma">Tarma</option>
+                        <option value="Yauli">Yauli</option>
+                        <option value="Chupaca">Chupaca</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:1rem;"><label>Distrito</label><br>
+                    <select id="distrito" required style="width:100%;margin-top:0.3rem;">
+                        <option value="">Selecciona un distrito</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:1rem;"><label>Dirección</label><br>
+                    <input type="text" placeholder="Dirección" id="direccion" required style="width:100%;margin-top:0.3rem;">
+                </div>
+                <div style="margin-bottom:1rem;"><label>Correo electrónico</label><br>
+                    <input type="email" placeholder="Correo electrónico" required style="width:100%;margin-top:0.3rem;">
+                </div>
+                <div style="margin-bottom:1rem;"><label>Teléfono</label><br>
+                    <input type="tel" placeholder="Teléfono" required style="width:100%;margin-top:0.3rem;">
+                </div>
+                <button type="submit">Registrarse</button>
+            </form>
+            <div class="step-nav">
+                <button class="step-btn" onclick="nextStep(1)">Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div id="acceso" class="step-section">
+        <div class="section-content">
+            <h2 class="section-title">Acceso</h2>
+            <form>
+                <input type="text" placeholder="DNI" required autofocus>
+                <button type="submit">Ingresar</button>
+            </form>
+            <div class="step-nav">
+                <button class="step-btn" onclick="prevStep(0)">Anterior</button>
+                <button class="step-btn" onclick="nextStep(2)">Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div id="presentacion" class="step-section">
+        <div class="section-content">
+            <div class="fq-logo">FQ INGENIEROS</div>
+            <h2 class="section-title">Innovación que trasciende</h2>
+            <p>En FQ Ingenieros, nos apasiona transformar el mundo a través de la innovación, la excelencia y la tecnología. Somos una empresa líder en el desarrollo de proyectos de ingeniería moderna, comprometidos con el futuro sostenible y el progreso de la sociedad.</p>
+            <p>Nuestro equipo está conformado por profesionales visionarios, creativos y altamente capacitados, que trabajan en sinergia para convertir ideas en soluciones reales y de alto impacto. Creemos que la ingeniería es mucho más que construir: es imaginar, diseñar y materializar el futuro.</p>
+            <p>Ofrecemos servicios integrales en consultoría, diseño, ejecución y gestión de proyectos, abarcando diversas áreas como infraestructura, energía, tecnología, educación y medio ambiente. Nuestra metodología se basa en la mejora continua, la calidad y la adaptación a los desafíos de un mundo en constante cambio.</p>
+            <p>En FQ Ingenieros, fomentamos la colaboración multidisciplinaria, la capacitación constante y el uso de herramientas digitales de última generación. Apostamos por la sostenibilidad, la ética profesional y la responsabilidad social en cada uno de nuestros proyectos.</p>
+            <p>Te invitamos a descubrir una nueva forma de hacer ingeniería, donde la creatividad y la tecnología se unen para construir un futuro mejor para todos. Gracias por confiar en nosotros y ser parte de esta experiencia transformadora.</p>
+            <p style="font-weight: bold; color: #0078d7; margin-top: 2rem;">¡Bienvenido a FQ Ingenieros, donde la innovación trasciende y el futuro comienza hoy!</p>
+            <div class="step-nav">
+                <button class="step-btn" onclick="prevStep(1)">Anterior</button>
+                <button class="step-btn" onclick="nextStep(3)">Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div id="plataforma" class="step-section">
+        <div class="section-content">
+            <h2 class="section-title">Plataforma Educativa FQ Ingenieros</h2>
+            <main class="edu-main">
+                <section class="bienvenida">
+                    <h3>Bienvenido a tu plataforma educativa</h3>
+                    <p>Accede a cursos, recursos, evaluaciones y mucho más en un entorno moderno y profesional.</p>
+                </section>
+                <section class="dashboard">
+                    <div class="dashboard-item">
+                        <h3>Progreso Individual de Cursos</h3>
+                        <div style="margin-bottom:1.1rem;">
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Matemáticas</div>
+                            <div class="progress-bar"><div class="progress" style="width: 80%">80%</div></div>
+                        </div>
+                        <div style="margin-bottom:1.1rem;">
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Física</div>
+                            <div class="progress-bar"><div class="progress" style="width: 60%">60%</div></div>
+                        </div>
+                        <div style="margin-bottom:1.1rem;">
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Química</div>
+                            <div class="progress-bar"><div class="progress" style="width: 35%">35%</div></div>
+                        </div>
+                        <div>
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Simulación de Procesos</div>
+                            <div class="progress-bar"><div class="progress" style="width: 95%">95%</div></div>
+                        </div>
+                    </div>
+                    <div class="dashboard-item">
+                        <h3>Próximas Evaluaciones</h3>
+                        <ul>
+                            <li>Matemáticas - 15/03/2026</li>
+                            <li>Física - 20/03/2026</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-item">
+                        <h3>Certificados Obtenidos</h3>
+                        <ul>
+                            <li>Introducción a la Ingeniería</li>
+                            <li>Simulación de Procesos</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+            <footer class="edu-footer">
+                <p>&copy; 2026 FQ Ingenieros. Todos los derechos reservados.</p>
+            </footer>
+            <div class="step-nav">
+                <button class="step-btn" onclick="prevStep(2)">Anterior</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function nextStep(idx) {
+            const steps = document.querySelectorAll('.step-section');
+            steps.forEach(s => s.classList.remove('active'));
+            steps[idx].classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        function prevStep(idx) {
+            const steps = document.querySelectorAll('.step-section');
+            steps.forEach(s => s.classList.remove('active'));
+            steps[idx].classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Usuario | Plataforma Educativa</title>
+    <link rel="stylesheet" href="styles/educativa.css">
+    <style>
+        .inicio-usuario {
+            max-width: 700px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px #0078d71a;
+            padding: 2.5rem 2rem;
+        }
+        .inicio-usuario h2 {
+            color: #0078d7;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+        .inicio-usuario .bienvenida {
+            font-size: 1.15rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .inicio-usuario .panel-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .inicio-usuario .panel-link {
+            background: linear-gradient(90deg, #0078d7 0%, #00bfae 100%);
+            color: #fff;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 8px #00bfae33;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .inicio-usuario .panel-link:hover {
+            background: linear-gradient(90deg, #00bfae 0%, #0078d7 100%);
+            box-shadow: 0 4px 16px #00bfae55;
+        }
+    </style>
+</head>
+<body>
+    <div class="inicio-usuario">
+        <h2>Bienvenido a tu Plataforma Educativa</h2>
+        <div class="bienvenida">Accede rápidamente a tus cursos, evaluaciones, certificados y perfil.</div>
+        <div class="panel-links">
+            <a href="cursos.html" class="panel-link">Catálogo de Cursos</a>
+            <a href="usuario.html" class="panel-link">Mi Perfil</a>
+            <a href="evaluaciones.html" class="panel-link">Evaluaciones</a>
+            <a href="registro.html" class="panel-link">Registro</a>
+            <a href="reportes.html" class="panel-link">Reportes</a>
+            <a href="comunidad.html" class="panel-link">Comunidad</a>
+            <a href="admin.html" class="panel-link">Administración</a>
+            <a href="usuario.html#certificados" class="panel-link">Certificados</a>
+        </div>
+        <div style="margin-top:2rem;color:#0078d7;font-weight:500;">¿Necesitas ayuda? <a href="soporte.html" style="color:#00bfae;text-decoration:underline;">Contacta soporte</a></div>
+    </div>
+</body>
+</html>
