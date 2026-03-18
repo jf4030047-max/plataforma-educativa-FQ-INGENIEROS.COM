@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Cursos | Plataforma Educativa</title>
+    <link rel="stylesheet" href="styles/educativa.css">
+    <style>
+        .cursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .curso-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px #0078d71a;
+            padding: 1.7rem 1.3rem 1.3rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: box-shadow 0.2s, transform 0.2s;
+            border: 1.5px solid #e0e0e0;
+            min-height: 240px;
+        }
+        .curso-card:hover {
+            box-shadow: 0 6px 28px #0078d744;
+            transform: translateY(-6px) scale(1.03);
+            border-color: #00bfae;
+        }
+        .curso-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #0078d7;
+            font-size: 1.22rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .curso-card p {
+            margin: 0 0 0.7rem 0;
+            color: #333;
+            font-size: 1.04rem;
+        }
+        .curso-card .curso-meta {
+            font-size: 0.97rem;
+            color: #666;
+            margin-bottom: 0.7rem;
+        }
+        .curso-card .ver-detalle {
+            margin-top: auto;
+            align-self: flex-end;
+            background: linear-gradient(90deg, #0078d7 0%, #00bfae 100%);
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            padding: 0.55rem 1.3rem;
+            font-size: 1.04rem;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #00bfae33;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .curso-card .ver-detalle:hover {
+            background: linear-gradient(90deg, #00bfae 0%, #0078d7 100%);
+            box-shadow: 0 4px 16px #00bfae55;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Catálogo de Cursos</h1>
+        <nav>
+            <a href="usuario.html">Mi Perfil</a>
+            <a href="comunidad.html">Comunidad</a>
+            <a href="soporte.html">Soporte</a>
+            <a href="admin.html">Administración</a>
+        </nav>
+    </header>
+    <main>
+        <section class="filtros">
+            <form id="filtros-form" style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+                <input type="text" id="busqueda" placeholder="Buscar curso..." style="flex:2; min-width:180px;" />
+                <select id="categoria" style="flex:1; min-width:140px;">
+                    <option value="">Todas las categorías</option>
+                    <option value="programacion">Programación</option>
+                    <option value="ingenieria">Ingeniería</option>
+                    <option value="ciencias">Ciencias</option>
+                    <option value="negocios">Negocios</option>
+                </select>
+                <select id="nivel" style="flex:1; min-width:120px;">
+                    <option value="">Todos los niveles</option>
+                    <option value="basico">Básico</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="avanzado">Avanzado</option>
+                </select>
+                <button type="submit" style="flex:0;">Filtrar</button>
+            </form>
+        </section>
+        <section class="cursos-lista">
+            <div id="cursos-grid" class="cursos-grid">
+                <!-- Render dinámico de cursos -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 FQ Ingenieros - Plataforma Educativa</p>
+    </footer>
+    <script src="js/cursos.js"></script>
+    <script>
+    // Sincronización de cursos
+    inicializarCursos();
+
+    function renderCursos(cursos) {
+        const grid = document.getElementById('cursos-grid');
+        grid.innerHTML = '';
+        const imagenes = [
+            'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80',
+            'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80',
+            'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80',
+            'https://images.unsplash.com/photo-1515165562835-c7a0b4a2b2b8?auto=format&fit=crop&w=400&q=80',
+            'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80'
+        ];
+        cursos.forEach((curso, idx) => {
+            const card = document.createElement('div');
+            card.className = 'curso-card';
+            card.innerHTML = `
+                <img src="${imagenes[idx % imagenes.length]}" alt="${curso.titulo}" style="width:100%;height:160px;object-fit:cover;border-radius:10px 10px 0 0;">
+                <span class="badge bg-primary mb-2">${curso.categoria.charAt(0).toUpperCase() + curso.categoria.slice(1)}</span>
+                <h3 style="margin-top:0.5rem;">${curso.titulo}</h3>
+                <div class="curso-meta mb-2">${curso.duracion} &bull; <span class="badge bg-success">${curso.nivel.charAt(0).toUpperCase() + curso.nivel.slice(1)}</span></div>
+                <p>${curso.descripcion}</p>
+                <button class="ver-detalle" onclick="window.location.href='curso-detalle.html?id=${curso.id}'">Ver detalle</button>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function filtrarCursos(e) {
+        e.preventDefault();
+        const texto = document.getElementById('busqueda').value.toLowerCase();
+        const categoria = document.getElementById('categoria').value;
+        const nivel = document.getElementById('nivel').value;
+        let cursos = obtenerCursos();
+        let filtrados = cursos.filter(curso => {
+            return (
+                (curso.titulo.toLowerCase().includes(texto) || curso.descripcion.toLowerCase().includes(texto)) &&
+                (categoria === '' || curso.categoria === categoria) &&
+                (nivel === '' || curso.nivel === nivel)
+            );
+        });
+        renderCursos(filtrados);
+    }
+
+    document.getElementById('filtros-form').addEventListener('submit', filtrarCursos);
+    renderCursos(obtenerCursos());
+    </script>
+</body>
+</html>

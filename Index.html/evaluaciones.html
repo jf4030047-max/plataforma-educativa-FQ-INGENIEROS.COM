@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluaciones | Plataforma Educativa</title>
+    <link rel="stylesheet" href="styles/educativa.css">
+    <style>
+        .evaluaciones-lista {
+            background: #f4f8fb;
+            border-radius: 10px;
+            padding: 1.2rem 1rem;
+            margin-bottom: 2rem;
+        }
+        .evaluacion {
+            background: #fff;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            padding: 0.7rem 1rem;
+            box-shadow: 0 1px 4px #0078d71a;
+        }
+        .evaluacion-titulo {
+            font-weight: 600;
+            color: #0078d7;
+            margin-bottom: 0.2rem;
+        }
+        .evaluacion-estado {
+            font-size: 0.97rem;
+            color: #00bfae;
+            margin-left: 1rem;
+        }
+        .evaluacion-btn {
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .evaluacion-btn[disabled] {
+            background: #bdbdbd;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <a href="cursos.html">&larr; Catálogo</a>
+        <h1>Evaluaciones</h1>
+    </header>
+    <main>
+        <section class="evaluaciones-lista">
+            <h3>Evaluaciones del curso</h3>
+            <div style="margin-bottom:1rem;color:#0078d7;font-weight:500;">Agrega manualmente las evaluaciones realizadas por los usuarios.</div>
+            <form id="agregar-evaluacion" style="margin-bottom:2rem;">
+                <input type="text" placeholder="Título de la evaluación" style="width:60%;margin-right:1rem;">
+                <select style="width:20%;margin-right:1rem;">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="aprobada">Aprobada</option>
+                    <option value="reprobada">Reprobada</option>
+                </select>
+                <button type="submit">Agregar</button>
+            </form>
+            <div id="evaluaciones-list"></div>
+        </section>
+        <script>
+        // Evaluaciones manuales
+        const evaluaciones = [];
+        const form = document.getElementById('agregar-evaluacion');
+        const lista = document.getElementById('evaluaciones-list');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const titulo = form.querySelector('input').value.trim();
+            const estado = form.querySelector('select').value;
+            if (!titulo) return;
+            evaluaciones.push({ titulo, estado });
+            renderEvaluaciones();
+            form.reset();
+        });
+        function renderEvaluaciones() {
+            lista.innerHTML = '';
+            evaluaciones.forEach(ev => {
+                const div = document.createElement('div');
+                div.className = 'evaluacion';
+                div.innerHTML = `<div class="evaluacion-titulo">${ev.titulo}</div><div class="evaluacion-estado">${ev.estado.charAt(0).toUpperCase() + ev.estado.slice(1)}</div>`;
+                lista.appendChild(div);
+            });
+        }
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2026 FQ Ingenieros - Plataforma Educativa</p>
+    </footer>
+    <script src="js/evaluaciones.js"></script>
+</body>
+</html>

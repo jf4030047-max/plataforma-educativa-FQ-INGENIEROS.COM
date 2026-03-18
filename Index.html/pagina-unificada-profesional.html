@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Unificada Profesional - Paso a Paso</title>
+    <link rel="stylesheet" href="styles/educativa.css">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        .header-pro {
+            background: #0078d7;
+            color: #fff;
+            padding: 1.2rem 0;
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 8px #0078d733;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .stepper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0 1.5rem 0;
+        }
+        .step {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #e0e7ef;
+            color: #0078d7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 0.7rem;
+            border: 2px solid #e0e7ef;
+            transition: background 0.3s, color 0.3s, border 0.3s;
+        }
+        .step.active {
+            background: #0078d7;
+            color: #fff;
+            border: 2px solid #0078d7;
+        }
+        .step.completed {
+            background: #28a745;
+            color: #fff;
+            border: 2px solid #28a745;
+        }
+        .step-label {
+            font-size: 0.95rem;
+            color: #555;
+            margin-top: 0.3rem;
+            text-align: center;
+        }
+        .progress-bar-pro {
+            width: 80vw;
+            max-width: 600px;
+            height: 8px;
+            background: #e0e7ef;
+            border-radius: 6px;
+            margin: 0 auto 2.2rem auto;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0078d7 60%, #28a745 100%);
+            border-radius: 6px;
+            transition: width 0.4s;
+        }
+        .step-section {
+            display: none;
+            min-height: 70vh;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s;
+        }
+        .step-section.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-content {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 2.5rem 2rem;
+            max-width: 700px;
+            width: 95vw;
+        }
+        .section-title {
+            color: #0078d7;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        .step-nav {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .step-btn {
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.7rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: background 0.2s;
+        }
+        .step-btn:hover {
+            background: #005fa3;
+        }
+        .step-btn:disabled {
+            background: #b0c4d7;
+            cursor: not-allowed;
+        }
+        .input-error {
+            border: 1.5px solid #e53935 !important;
+            background: #fff6f6;
+        }
+        .error-msg {
+            color: #e53935;
+            font-size: 0.98rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        @media (max-width: 800px) {
+            .section-content {
+                max-width: 98vw;
+                padding: 1.2rem 0.5rem;
+            }
+            .progress-bar-pro {
+                width: 98vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-pro">FQ INGENIEROS - Plataforma Educativa</div>
+    <div class="stepper" id="stepper">
+        <div class="step active" id="step-0">1</div>
+        <div class="step" id="step-1">2</div>
+        <div class="step" id="step-2">3</div>
+        <div class="step" id="step-3">4</div>
+    </div>
+    <div class="progress-bar-pro">
+        <div class="progress-bar-fill" id="progressBar" style="width: 25%"></div>
+    </div>
+    <div id="registro" class="step-section active">
+        <div class="section-content">
+            <h2 class="section-title">Registro</h2>
+            <form id="registroForm">
+                <div class="error-msg" id="registroError" style="display:none;"></div>
+                <label>Nombre(s)</label>
+                <input type="text" id="nombre" placeholder="Nombre(s)" required>
+                <label>Apellidos</label>
+                <input type="text" id="apellidos" placeholder="Apellidos" required>
+                <label>DNI</label>
+                <input type="text" id="dni" placeholder="DNI" required maxlength="8" pattern="\d{8}" title="Debe tener exactamente 8 dígitos" autocomplete="off">
+                <div style="margin-bottom:1rem;"><label>Provincia</label><br>
+                    <select id="provincia" required style="width:100%;margin-top:0.3rem;">
+                        <option value="">Selecciona una provincia</option>
+                        <option value="Huancayo">Huancayo</option>
+                        <option value="Concepción">Concepción</option>
+                        <option value="Chanchamayo">Chanchamayo</option>
+                        <option value="Jauja">Jauja</option>
+                        <option value="Junín">Junín</option>
+                        <option value="Satipo">Satipo</option>
+                        <option value="Tarma">Tarma</option>
+                        <option value="Yauli">Yauli</option>
+                        <option value="Chupaca">Chupaca</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:1rem;"><label>Distrito</label><br>
+                    <select id="distrito" required style="width:100%;margin-top:0.3rem;">
+                        <option value="">Selecciona un distrito</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:1rem;"><label>Dirección</label><br>
+                    <input type="text" id="direccion" placeholder="Dirección" required style="width:100%;margin-top:0.3rem;">
+                </div>
+                <div style="margin-bottom:1rem;"><label>Correo electrónico</label><br>
+                    <input type="email" id="correo" placeholder="Correo electrónico" required style="width:100%;margin-top:0.3rem;">
+                </div>
+                <div style="margin-bottom:1rem;"><label>Teléfono</label><br>
+                    <input type="tel" id="telefono" placeholder="Teléfono" required style="width:100%;margin-top:0.3rem;">
+                </div>
+                <button type="submit" class="step-btn">Registrarse</button>
+            </form>
+            <div class="step-nav">
+                <button class="step-btn" id="registroSiguiente">Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div id="acceso" class="step-section">
+        <div class="section-content">
+            <h2 class="section-title">Acceso</h2>
+            <form id="accesoForm">
+                <div class="error-msg" id="accesoError" style="display:none;"></div>
+                <input type="text" id="accesoDni" placeholder="DNI" required autofocus>
+                <button type="submit" class="step-btn">Ingresar</button>
+            </form>
+            <div class="step-nav">
+                <button class="step-btn" onclick="prevStep(0)">Anterior</button>
+                <button class="step-btn" id="accesoSiguiente">Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div id="presentacion" class="step-section">
+        <div class="section-content">
+            <div class="fq-logo">FQ INGENIEROS</div>
+            <h2 class="section-title">Innovación que trasciende</h2>
+            <p>En FQ Ingenieros, nos apasiona transformar el mundo a través de la innovación, la excelencia y la tecnología. Somos una empresa líder en el desarrollo de proyectos de ingeniería moderna, comprometidos con el futuro sostenible y el progreso de la sociedad.</p>
+            <p>Nuestro equipo está conformado por profesionales visionarios, creativos y altamente capacitados, que trabajan en sinergia para convertir ideas en soluciones reales y de alto impacto. Creemos que la ingeniería es mucho más que construir: es imaginar, diseñar y materializar el futuro.</p>
+            <p>Ofrecemos servicios integrales en consultoría, diseño, ejecución y gestión de proyectos, abarcando diversas áreas como infraestructura, energía, tecnología, educación y medio ambiente. Nuestra metodología se basa en la mejora continua, la calidad y la adaptación a los desafíos de un mundo en constante cambio.</p>
+            <p>En FQ Ingenieros, fomentamos la colaboración multidisciplinaria, la capacitación constante y el uso de herramientas digitales de última generación. Apostamos por la sostenibilidad, la ética profesional y la responsabilidad social en cada uno de nuestros proyectos.</p>
+            <p>Te invitamos a descubrir una nueva forma de hacer ingeniería, donde la creatividad y la tecnología se unen para construir un futuro mejor para todos. Gracias por confiar en nosotros y ser parte de esta experiencia transformadora.</p>
+            <p style="font-weight: bold; color: #0078d7; margin-top: 2rem;">¡Bienvenido a FQ Ingenieros, donde la innovación trasciende y el futuro comienza hoy!</p>
+            <div class="step-nav">
+                <button class="step-btn" onclick="prevStep(1)">Anterior</button>
+                <button class="step-btn" onclick="nextStep(3)">Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div id="plataforma" class="step-section">
+        <div class="section-content">
+            <h2 class="section-title">Plataforma Educativa FQ Ingenieros</h2>
+            <main class="edu-main">
+                <section class="bienvenida">
+                    <h3>Bienvenido a tu plataforma educativa</h3>
+                    <p>Accede a cursos, recursos, evaluaciones y mucho más en un entorno moderno y profesional.</p>
+                </section>
+                <section class="dashboard">
+                    <div class="dashboard-item">
+                        <h3>Progreso Individual de Cursos</h3>
+                        <div style="margin-bottom:1.1rem;">
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Matemáticas</div>
+                            <div class="progress-bar"><div class="progress" style="width: 80%">80%</div></div>
+                        </div>
+                        <div style="margin-bottom:1.1rem;">
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Física</div>
+                            <div class="progress-bar"><div class="progress" style="width: 60%">60%</div></div>
+                        </div>
+                        <div style="margin-bottom:1.1rem;">
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Química</div>
+                            <div class="progress-bar"><div class="progress" style="width: 35%">35%</div></div>
+                        </div>
+                        <div>
+                            <div style="font-weight:500; margin-bottom:0.2rem;">Simulación de Procesos</div>
+                            <div class="progress-bar"><div class="progress" style="width: 95%">95%</div></div>
+                        </div>
+                    </div>
+                    <div class="dashboard-item">
+                        <h3>Próximas Evaluaciones</h3>
+                        <ul>
+                            <li>Matemáticas - 15/03/2026</li>
+                            <li>Física - 20/03/2026</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-item">
+                        <h3>Certificados Obtenidos</h3>
+                        <ul>
+                            <li>Introducción a la Ingeniería</li>
+                            <li>Simulación de Procesos</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+            <footer class="edu-footer">
+                <p>&copy; 2026 FQ Ingenieros. Todos los derechos reservados.</p>
+            </footer>
+            <div class="step-nav">
+                <button class="step-btn" onclick="prevStep(2)">Anterior</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const steps = document.querySelectorAll('.step-section');
+        const stepIndicators = document.querySelectorAll('.step');
+        const progressBar = document.getElementById('progressBar');
+        function showStep(idx) {
+            steps.forEach((s, i) => {
+                s.classList.toggle('active', i === idx);
+                stepIndicators[i].classList.remove('active', 'completed');
+                if (i < idx) stepIndicators[i].classList.add('completed');
+                else if (i === idx) stepIndicators[i].classList.add('active');
+            });
+            progressBar.style.width = ((idx+1)*25) + '%';
+            window.scrollTo(0, 0);
+        }
+        function nextStep(idx) { showStep(idx); }
+        function prevStep(idx) { showStep(idx); }
+        // Validación profesional para registro
+        document.getElementById('registroSiguiente').onclick = function() {
+            const nombre = document.getElementById('nombre');
+            const apellidos = document.getElementById('apellidos');
+            const dni = document.getElementById('dni');
+            const provincia = document.getElementById('provincia');
+            const distrito = document.getElementById('distrito');
+            const direccion = document.getElementById('direccion');
+            const correo = document.getElementById('correo');
+            const telefono = document.getElementById('telefono');
+            let error = '';
+            [nombre, apellidos, dni, provincia, distrito, direccion, correo, telefono].forEach(input => input.classList.remove('input-error'));
+            if (!nombre.value.trim()) { error = 'El nombre es obligatorio.'; nombre.classList.add('input-error'); }
+            else if (!apellidos.value.trim()) { error = 'Los apellidos son obligatorios.'; apellidos.classList.add('input-error'); }
+            else if (!/^\d{8}$/.test(dni.value.trim())) { error = 'El DNI debe tener 8 dígitos.'; dni.classList.add('input-error'); }
+            else if (!provincia.value) { error = 'Selecciona una provincia.'; provincia.classList.add('input-error'); }
+            else if (!distrito.value) { error = 'Selecciona un distrito.'; distrito.classList.add('input-error'); }
+            else if (!direccion.value.trim()) { error = 'La dirección es obligatoria.'; direccion.classList.add('input-error'); }
+            else if (!correo.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(correo.value.trim())) { error = 'Correo electrónico inválido.'; correo.classList.add('input-error'); }
+            else if (!telefono.value.trim()) { error = 'El teléfono es obligatorio.'; telefono.classList.add('input-error'); }
+            if (error) {
+                document.getElementById('registroError').innerText = error;
+                document.getElementById('registroError').style.display = 'block';
+                return false;
+            }
+            document.getElementById('registroError').style.display = 'none';
+            nextStep(1);
+        };
+        // Validación profesional para acceso
+        document.getElementById('accesoSiguiente').onclick = function() {
+            const accesoDni = document.getElementById('accesoDni');
+            accesoDni.classList.remove('input-error');
+            let error = '';
+            if (!/^\d{8}$/.test(accesoDni.value.trim())) { error = 'El DNI debe tener 8 dígitos.'; accesoDni.classList.add('input-error'); }
+            if (error) {
+                document.getElementById('accesoError').innerText = error;
+                document.getElementById('accesoError').style.display = 'block';
+                return false;
+            }
+            document.getElementById('accesoError').style.display = 'none';
+            nextStep(2);
+        };
+        // Evitar submit real de formularios
+        document.getElementById('registroForm').onsubmit = function(e){ e.preventDefault(); };
+        document.getElementById('accesoForm').onsubmit = function(e){ e.preventDefault(); };
+    </script>
+</body>
+</html>

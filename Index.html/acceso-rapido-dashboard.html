@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Rápido - Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dashboard-menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .dashboard-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: #f4f8fb;
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            transition: box-shadow 0.2s, background 0.2s;
+            box-shadow: 0 1px 4px #0078d71a;
+        }
+        .dashboard-item:hover {
+            background: #e6f0fa;
+            box-shadow: 0 4px 16px #0078d733;
+        }
+        .dashboard-icon {
+            font-size: 2.7rem;
+            margin-bottom: 1rem;
+            color: #0078d7;
+        }
+        .dashboard-link {
+            color: #0078d7;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: color 0.2s;
+        }
+        .dashboard-link:hover {
+            color: #005fa3;
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .dashboard-menu {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                padding: 1.2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-menu">
+        <div class="dashboard-item">
+            <span class="dashboard-icon">📝</span>
+            <a class="dashboard-link" href="registro.html" target="_blank">Registro</a>
+        </div>
+        <div class="dashboard-item">
+            <span class="dashboard-icon">🔑</span>
+            <a class="dashboard-link" href="login.html" target="_blank">Acceso</a>
+        </div>
+        <div class="dashboard-item">
+            <span class="dashboard-icon">🎬</span>
+            <a class="dashboard-link" href="presentacion.html" target="_blank">Presentación</a>
+        </div>
+        <div class="dashboard-item">
+            <span class="dashboard-icon">📚</span>
+            <a class="dashboard-link" href="educativa.html" target="_blank">Plataforma Educativa</a>
+        </div>
+    </div>
+</body>
+</html>
